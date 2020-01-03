@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>   
+<!DOCTYPE mapper   
+PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="leave_system.dao.LRegNumDao">
+	<select id="Cregnum" parameterType="leave_system.entity.CRegNum" resultType="leave_system.entity.CRegNum">
+			select * from creg where Used=#{Used} and College=#{College};
+	</select>
+
+	<select id="Sregnum" parameterType="leave_system.entity.SRegNum" resultType="leave_system.entity.SRegNum">
+			select * from sreg where Used=#{Used} and College=#{College};
+	</select>
+	
+	<select id="Tinfo" parameterType="java.lang.String" resultType="leave_system.entity.Teacher">
+			select * from teacher where TNo=#{TNo};
+	</select>
+</mapper>

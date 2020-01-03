@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>   
+<!DOCTYPE mapper   
+PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="leave_system.dao.ModifyDao">
+	<select id="SCheck" parameterType="java.lang.String" resultType="java.lang.String">
+		select Password from student where SNo=#{SNo};			
+	</select>  
+	
+	<select id="SModify" parameterType="java.lang.String">
+		update student set Password=#{Password} where SNo=#{SNo};			
+	</select>  
+	
+	<select id="TINIT" parameterType="java.lang.String" resultType="leave_system.entity.Teacher">
+		select * from teacher where TNo=#{TNo};			
+	</select>  
+	
+	<select id="TCheck" parameterType="java.lang.String" resultType="java.lang.String">
+		select Password from teacher where TNo=#{TNo};			
+	</select>  
+	
+	<select id="TModify" parameterType="leave_system.entity.Teacher">
+		update teacher set Password=#{Password} and Contact=#{Contact} where TNo=#{TNo};			
+	</select> 
+</mapper>

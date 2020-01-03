@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>   
+<!DOCTYPE mapper   
+PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="leave_system.dao.SRegDao">
+	<select id="SInfor" parameterType="java.lang.String" resultType="leave_system.entity.Student">
+			select * from student where SNo=#{SNo};
+	</select>
+	
+	<select id="SRN" parameterType="java.lang.String" resultType="leave_system.entity.SRegNum">
+			select * from sreg where RegNum=#{RegNum} and College=#{College};
+	</select>
+	
+	<update id="SRegUpdate" parameterType="java.lang.String">
+		update sreg set Used='Yes' where RegNum=#{RegNum};
+	</update>
+	
+	<update id="SUpdate" parameterType="leave_system.entity.Student"> 
+		update student set Job=#{Job},JobDes=#{JobDes} where SNo=#{SNo};
+	</update>
+</mapper>
+ 

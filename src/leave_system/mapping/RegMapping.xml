@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>   
+<!DOCTYPE mapper   
+PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="leave_system.dao.RegDao">
+	<insert id="SReg" parameterType="leave_system.entity.Student">
+			insert into student(SNo,SName,Password,College,Major,Class,Job,JobDes) values(#{SNo},#{SName},#{Password},#{College},#{Major},#{Classes},#{Job},#{JobDes})
+	</insert> 
+	 
+	<select id="SCheck" parameterType="leave_system.entity.Student" resultType="leave_system.entity.Student">
+			select SNo from student where SNo = #{SNo} 
+	</select>
+	
+	<insert id="TReg" parameterType="leave_system.entity.Teacher">
+			insert into teacher(TNo,TName,Password,College,Grade,Job,Contact) values(#{TNo},#{TName},#{Password},#{College},#{Grade},#{Job},#{Contact})
+	</insert> 
+	
+	<select id="TRN" parameterType="leave_system.entity.TRegNum" resultType="leave_system.entity.TRegNum">
+			select RegNum,College,Used from treg where RegNum = #{RegNum} and College=#{College}
+	</select> 
+	
+	<select id="TCheck" parameterType="leave_system.entity.Teacher" resultType="leave_system.entity.Teacher">
+			select TNo from teacher where TNo = #{TNo}
+	</select>  
+	
+	<select id="TNameCheck" parameterType="leave_system.entity.Teacher" resultType="java.lang.Integer">
+			select count(TName) from teacher where TName = #{TNo}
+	</select> 
+	
+	<update id="TRNUpdate" parameterType="leave_system.entity.TRegNum">
+			update treg set Used="Yes" where RegNum= #{RegNum}"
+	</update>
+	
+	<insert id="CReg" parameterType="leave_system.entity.Check">
+			insert into checker(CNo,Password,College) values(#{CNo},#{Password},#{College})
+	</insert> 
+	
+	<select id="CInfo" parameterType="leave_system.entity.Student" resultType="leave_system.entity.Student">
+			select College,Password from student where SNo = #{SNo}
+	</select> 
+	
+	<select id="CRN" parameterType="leave_system.entity.CRegNum" resultType="leave_system.entity.CRegNum">
+			select RegNum,College,Used from creg where RegNum = #{RegNum} and College=#{College}
+	</select> 
+	
+	<select id="CCheck" parameterType="leave_system.entity.Check" resultType="leave_system.entity.Check">
+			select CNo from checker where CNo = #{CNo}
+	</select>
+	
+	<update id="CRNUpdate" parameterType="leave_system.entity.CRegNum">
+			update creg set Used="Yes" where RegNum= #{RegNum}"
+	</update>
+</mapper>  
+ 

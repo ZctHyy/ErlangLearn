@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>   
+<!DOCTYPE mapper   
+PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="leave_system.dao.SRunDao">
+	<select id="Check" parameterType="leave_system.entity.Run" resultType="leave_system.entity.Run">
+			select * from srun where SNo=#{SNo} and Date=#{Date} and Time=#{Time};
+	</select>
+	
+	<insert id="SRun" parameterType="leave_system.entity.Run" >
+			insert into srun(SNo,Date,Time,Record,RecordDate,Type) values (#{SNo},Date=#{Date},#{Time},#{Record},#{RecordDate},'T');
+	</insert>
+</mapper>
+ 

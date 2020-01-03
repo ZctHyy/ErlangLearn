@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>   
+<!DOCTYPE mapper   
+PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="leave_system.dao.GenRegNumDao">
+	<insert id="CGen" parameterType="leave_system.entity.CRegNum">
+			insert into creg(RegNum,College,TNo,Used) 
+			values(#{RegNum},#{College},#{TNo},#{Used});
+	</insert> 
+	
+	<insert id="SGen" parameterType="leave_system.entity.SRegNum">
+			insert into sreg(RegNum,College,TNo,Used) 
+			values(#{RegNum},#{College},#{TNo},#{Used});
+	</insert> 
+	
+	<select id="Tinfo" parameterType="java.lang.String" resultType="leave_system.entity.Teacher">
+			select * from teacher where TNo=#{TNo};
+	</select>
+	
+	<select id="CGenCheck" parameterType="java.lang.String" resultType="leave_system.entity.CRegNum">
+			select * from creg where RegNum = #{RegNum} and Used='No' and College=#{College};
+	</select>
+
+	<select id="SGenCheck" parameterType="java.lang.String" resultType="leave_system.entity.SRegNum">
+			select * from sreg where RegNum = #{RegNum} and Used='No' and College=#{College};
+	</select>
+</mapper>

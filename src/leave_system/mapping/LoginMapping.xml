@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>   
+<!DOCTYPE mapper   
+PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="leave_system.dao.LoginDao">
+	<select id="SLogin" parameterType="leave_system.entity.Student" resultType="leave_system.entity.Student">
+			select SNo,Password from student where SNo = #{SNo} and Password=#{Password};
+	</select>
+	 
+	<select id="TLogin" parameterType="leave_system.entity.Teacher" resultType="leave_system.entity.Teacher">
+			select TNo,Password from teacher where TNo = #{TNo} and Password=#{Password};
+	</select>
+	
+	<select id="Tinfo" parameterType="leave_system.entity.Teacher" resultType="leave_system.entity.Teacher">
+	<!-- <if test="CNo!=null and CNo!='' and Password!=null and Password!=''"> 不加，否则空的时候会出错-->
+			select * from teacher where  TNo = #{TNo};
+	</select>
+	
+	<select id="CLogin" parameterType="leave_system.entity.Check" resultType="leave_system.entity.Check">
+	<!-- <if test="CNo!=null and CNo!='' and Password!=null and Password!=''"> 不加，否则空的时候会出错-->
+			select CNo,Password from checker where CNo = #{CNo} and Password=#{Password}
+	</select>
+	
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>   
+<!DOCTYPE mapper   
+PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="leave_system.dao.RMessageDao">
+	<select id="TNo_ID" parameterType="java.lang.String" resultType="leave_system.entity.Leave">
+			select ID,SNo from tno_leave where TNo=${TNo} and Read='No';
+	</select>  
+	 
+	<select id="All_TNo_ID" parameterType="java.lang.String" resultType="leave_system.entity.Leave">
+			select ID,SNo from tno_leave where TNo=${TNo};
+	</select>  
+	
+	<select id="LeaveInfo" parameterType="java.lang.String" resultType="leave_system.entity.Leave">
+			select * from leaves where ID=${ID} and PON='审核通过' and SNo=#{SNo};
+	</select>  
+	
+	<select id="alreadyRead" parameterType="java.lang.String">
+			update tno_leave set Read='Yes' where SNo=#{SNo} and TNo=#{TNo} and ID=#{ID};
+	</select>  
+</mapper>

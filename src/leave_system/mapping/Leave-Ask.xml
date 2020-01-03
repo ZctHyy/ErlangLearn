@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>   
+<!DOCTYPE mapper   
+PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="leave_system.dao.LeaveAskDao">
+	<select id="CheckLeave" parameterType="leave_system.entity.Leave" resultType="leave_system.entity.Leave">
+			select ID from leaves where SNo=#{SNo} and Time=#{Time} and SDate=#{SDate} and EDate=#{EDate} ;
+	</select>  
+
+	<select id="SInfo" parameterType="java.lang.String" resultType="leave_system.entity.Student"> 
+			select * from student where SNo = #{SNo};
+	</select>
+ 
+	
+	<insert id="Asking" parameterType="leave_system.entity.Leave">
+			insert into leaves(SNo,SName,College,Major,Classes,Type,SDate,EDate,Time,Reason,PON,ID,Student,LoadDate) 
+			values(#{SNo},#{SName},#{College},#{Major},#{Classes},#{Type},#{SDate},#{EDate},#{Time},#{Reason},#{PON},#{ID},#{Student},#{LoadDate});
+	</insert> 
+	
+	<select id="TIDCheck" parameterType="java.lang.String" resultType="java.lang.String">
+			select ID from teacher where TNo = #{TNo} and ID=#{ID} and SNo=#{SNo};
+	</select>
+	
+	<insert id="TID" parameterType="leave_system.entity.Leave">
+			insert into tno_leave(TNo,ID,SNo,Read) values(#{TNo},#{ID},#{SNo},'No'); 
+	</insert> 
+	
+	<select id="TNoCheck" parameterType="java.lang.String" resultType="java.lang.String">
+			select TNo from teacher where TNo = #{TNo};
+	</select>
+	
+	<select id="IDCheck" parameterType="java.lang.String" resultType="java.lang.String">
+			select ID from leaves where ID = #{ID};
+	</select>
+</mapper>

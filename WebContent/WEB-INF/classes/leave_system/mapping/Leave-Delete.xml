@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>   
+<!DOCTYPE mapper   
+PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd"> 
+<mapper namespace="leave_system.dao.LeaveDeleteDao">
+
+	<select id="DLeaveCheck" parameterType="leave_system.entity.Leave" resultType="leave_system.entity.Leave">
+			select PON from leaves where ID=#{ID};
+	</select>   
+		 
+	<delete id="LeaveDelete" parameterType="leave_system.entity.Leave">
+			delete from leaves where ID=#{ID};
+	</delete>
+	
+</mapper>
